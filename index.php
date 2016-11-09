@@ -56,6 +56,14 @@
                 return parent::toString()."<br>"."Profilo : $this->profile.<br><br>";
                 
             }
+            
+            public static function generateEmployeeByProfile($profile){
+                $user = new static(null,null,$profile);
+                $user->profile = $profile;
+                
+                return $user;
+                
+            }
         }
 	
         $nico = Person::generatePersonByName("Nico");
@@ -80,6 +88,11 @@
         
         $medda4 = new Employees("Gaia", "21","Administrator");
         echo $medda4->toString();
+        
+        echo "<br><br>";
+        
+        $medda5 = Employees::generateEmployeeByProfile("User");
+        echo $medda5->toString();
 	/*$customer1 = new Person("Giuseppe Rossi","34");
 	echo "Nome: ".$customer1->name."<br>";
 	echo "Anni: ".$customer1->print_age()."<br>";
